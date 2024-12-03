@@ -58,7 +58,7 @@ const socialIcons = [
         <div class="footer__list--item">
           <p>{{ t('footer.social') }}</p>
           <div class="social-list">
-            <a v-for="icon in socialIcons" :key="icon.icon" :href="icon.link">
+            <a v-for="icon in socialIcons" :key="icon.icon" :href="icon.link" target="_blank">
               <img :src="icon.icon" alt="social" />
             </a>
           </div>

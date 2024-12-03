@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { watch } from 'vue'
 import ALogo from '@/components/UI/ALogo.vue'
+import AButton from '@/components/UI/AButton.vue'
 
 const { t } = useI18n()
 const { locale } = useI18n()

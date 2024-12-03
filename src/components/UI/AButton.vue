@@ -1,0 +1,117 @@
+<script setup lang="ts">
+interface Props {
+  title: string
+  size?: 'small' | 'medium' | 'large'
+  type?: 'colored' | 'outlined' | 'text'
+  background?: string
+  color?: string
+  gap?: string
+  disabled?: boolean
+  loading?: boolean
+  preIcon?: string | null
+  postIcon?: string | null
+}
+
+withDefaults(defineProps<Props>(), {
+  title: 'Button',
+  size: 'large',
+  type: 'colored',
+  background: '#3347F6',
+  color: '#fff',
+  gap: '16px',
+  disabled: false,
+  loading: false,
+  preIcon: null,
+  postIcon: null
+})
+</script>
+
+<template>
+  <button
+    class="a-button"
+    :class="{
+      large: size === 'large',
+      medium: size === 'medium',
+      small: size === 'small',
+      colored: type === 'colored',
+      outlined: type === 'outlined',
+      text: type === 'text',
+      disabled: disabled
+    }"
+  >
+    <img v-if="preIcon" :src="`/icons/${preIcon}.svg`" alt="icon" />
+    <span>{{ title }}</span>
+    <img v-if="postIcon" :src="`/icons/${postIcon}.svg`" alt="icon" />
+  </button>
+</template>
+
+<style scoped lang="scss">
+.a-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: v-bind(background);
+  border-radius: 8px;
+  gap: v-bind(gap);
+  span {
+    color: v-bind(color);
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}
+.large {
+  padding: 12px 24px;
+  max-height: 48px;
+}
+.medium {
+  padding: 8px 16px;
+  max-height: 40px;
+}
+.small {
+  padding: 4px 8px;
+  max-height: 32px;
+}
+.colored {
+  background: v-bind(background);
+  border: none;
+  span {
+    color: v-bind(color);
+  }
+  &:hover {
+    opacity: 0.9;
+  }
+}
+.outlined {
+  background: none;
+  border: 1px solid v-bind(background);
+  span {
+    color: v-bind(background);
+  }
+  &:hover {
+    background: v-bind(background);
+    span {
+      color: v-bind(color);
+    }
+  }
+}
+.text {
+  width: fit-content;
+  padding: 0;
+  background: none;
+  border: none;
+  span {
+    color: v-bind(color);
+  }
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+</style>
