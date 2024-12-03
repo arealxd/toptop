@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ASearch from '@/components/UI/ASearch.vue'
 import HomeCategories from '@/components/HomeCategories.vue'
+import ARecommended from '@/components/ARecommended.vue'
 </script>
 
 <template>
@@ -8,6 +9,7 @@ import HomeCategories from '@/components/HomeCategories.vue'
     <ASearch />
     <img src="/images/banner.png" alt="banner" class="home__banner" />
     <HomeCategories />
+    <ARecommended />
   </div>
 </template>
 

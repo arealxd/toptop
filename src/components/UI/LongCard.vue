@@ -21,9 +21,13 @@ defineProps<Props>()
 
 <template>
   <div class="long-card">
-    <img class="long-card__image" :src="image" :alt="title" />
+    <router-link :to="`/product/${slug}`" class="long-card__image-wrapper">
+      <img class="long-card__image" :src="image" :alt="title" />
+    </router-link>
     <div class="long-card__content">
-      <p class="long-card__content--title">{{ title }}</p>
+      <router-link :to="`/product/${slug}`" class="long-card__content--title">
+        {{ title }}
+      </router-link>
       <p class="long-card__content--description">{{ description }}</p>
       <div class="long-card__content--indicators">
         <p class="indicator" :class="{ new: type === 'new' }">
@@ -36,17 +40,17 @@ defineProps<Props>()
         <p>{{ formatDate(date) }}</p>
         <div class="views">
           <img src="/icons/views.svg" alt="views" />
-          <p>{{ views }} просмотров</p>
+          <p>{{ views?.toLocaleString('ru-RU') }} просмотров</p>
         </div>
       </div>
-      <div class="long-card__content--actions">
-        <div class="info">
-          <p class="price">{{ price?.toLocaleString('ru-RU') }} тг</p>
-          <p v-if="newest" class="newest">новое</p>
-          <p v-if="top" class="newest top">ТОП</p>
-        </div>
-        <img class="favorite" src="/icons/favorite-disabled.svg" alt="favorite-disabled" />
+    </div>
+    <div class="long-card__actions">
+      <div class="info">
+        <p class="price">{{ price?.toLocaleString('ru-RU') }} тг</p>
+        <p v-if="newest" class="newest">новое</p>
+        <p v-if="top" class="newest top">ТОП</p>
       </div>
+      <img class="favorite" src="/icons/favorite-disabled.svg" alt="favorite-disabled" />
     </div>
   </div>
 </template>
@@ -59,21 +63,31 @@ defineProps<Props>()
   border-radius: 8px;
   background: #fff;
   gap: 21px;
-  &__image {
-    width: 172px;
+  &__image-wrapper {
+    max-width: 172px;
+    min-width: 172px;
     height: 140px;
-    border-radius: 8px;
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    border-radius: 8px;
   }
   &__content {
     display: flex;
     flex-direction: column;
     &--title {
+      width: fit-content;
       color: #3347f6;
       font-size: 18px;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
+      cursor: pointer;
+      &:hover {
+        color: #0012b9;
+      }
     }
     &--description {
       color: #333340;
@@ -83,11 +97,17 @@ defineProps<Props>()
       line-height: 20px;
       margin-top: 16px;
       margin-bottom: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
     &--indicators {
       display: flex;
       gap: 16px;
       .indicator {
+        width: fit-content;
         border-radius: 8px;
         background: #ededed;
         color: #6e6e6e;
@@ -95,6 +115,7 @@ defineProps<Props>()
         font-style: normal;
         font-weight: 400;
         line-height: 14px;
+        text-align: center;
         padding: 4px 8px;
       }
       .new {
@@ -106,6 +127,7 @@ defineProps<Props>()
       display: flex;
       align-items: center;
       gap: 24px;
+      margin-top: auto;
       p {
         color: #898989;
         font-size: 14px;
@@ -119,40 +141,46 @@ defineProps<Props>()
         gap: 4px;
       }
     }
-    &--actions {
+  }
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .info {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      .info {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        .price {
-          color: #000;
-          font-size: 24px;
-          font-style: normal;
-          font-weight: 700;
-          line-height: normal;
-        }
-        .newest {
-          padding: 4px 8px;
-          border-radius: 8px;
-          background: #ededed;
-          color: #3347f6;
-          font-size: 16px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: normal;
-        }
-        .top {
-          color: #ff5100;
-          background: #fce8cb;
-          text-transform: uppercase;
-        }
+      align-items: flex-end;
+      gap: 8px;
+      .price {
+        color: #000;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        white-space: nowrap;
       }
-      .favorite {
-        cursor: pointer;
+      .newest {
+        width: fit-content;
+        padding: 4px 8px;
+        border-radius: 8px;
+        background: #ededed;
+        color: #3347f6;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-align: center;
       }
+      .top {
+        color: #ff5100;
+        background: #fce8cb;
+        text-transform: uppercase;
+      }
+    }
+    .favorite {
+      width: fit-content;
+      margin-left: auto;
+      cursor: pointer;
     }
   }
 }
