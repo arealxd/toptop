@@ -8,6 +8,7 @@ interface Props {
   description: string
   price: number
   type: 'new' | 'used'
+  whiteNew?: boolean
   top: boolean
   newest: boolean
   city: string
@@ -30,7 +31,7 @@ defineProps<Props>()
       </router-link>
       <p class="long-card__content--description">{{ description }}</p>
       <div class="long-card__content--indicators">
-        <p class="indicator" :class="{ new: type === 'new' }">
+        <p class="indicator" :class="{ new: type === 'new', 'white-new': whiteNew }">
           {{ type === 'new' ? 'новый' : 'Б/у' }}
         </p>
         <p class="indicator">продажа</p>
@@ -48,7 +49,7 @@ defineProps<Props>()
       <div class="info">
         <p class="price">{{ price?.toLocaleString('ru-RU') }} тг</p>
         <p v-if="newest" class="newest">новое</p>
-        <p v-if="top" class="newest top">ТОП</p>
+        <p v-if="top" class="newest top" :class="{ 'white-top': whiteNew }">ТОП</p>
       </div>
       <img class="favorite" src="/icons/favorite-disabled.svg" alt="favorite-disabled" />
     </div>
@@ -61,7 +62,6 @@ defineProps<Props>()
   display: flex;
   padding: 0 8px 0 8px;
   border-radius: 8px;
-  background: #fff;
   gap: 21px;
   &__image-wrapper {
     max-width: 172px;
@@ -122,6 +122,9 @@ defineProps<Props>()
         color: #ff5100;
         background: #fce8cb;
       }
+      .white-new {
+        background: #fff;
+      }
     }
     &--details {
       display: flex;
@@ -176,11 +179,17 @@ defineProps<Props>()
         background: #fce8cb;
         text-transform: uppercase;
       }
+      .white-top {
+        background: #fff;
+      }
     }
     .favorite {
       width: fit-content;
       margin-left: auto;
       cursor: pointer;
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
 }

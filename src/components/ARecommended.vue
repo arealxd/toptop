@@ -3,6 +3,14 @@ import { ref } from 'vue'
 import LongCard from '@/components/UI/LongCard.vue'
 import AButton from '@/components/UI/AButton.vue'
 import APagination from '@/components/UI/APagination.vue'
+import ACard from '@/components/UI/ACard.vue'
+
+interface Props {
+  adType: 'sale' | 'rent'
+  viewType: 'tiles' | 'list'
+}
+
+defineProps<Props>()
 
 const currentPage = ref(1)
 const totalPages = ref(14)
@@ -16,7 +24,7 @@ const changePage = (page: number) => {
 <template>
   <div class="a-recommended">
     <p class="a-recommended__title">Рекомендованные объявления</p>
-    <div class="a-recommended__list">
+    <div v-if="viewType === 'list'" class="a-recommended__list">
       <LongCard
         v-for="i in 3"
         :key="i"
@@ -28,6 +36,21 @@ const changePage = (page: number) => {
         type="new"
         top
         newest
+        city="Алматы"
+        date="2024-12-03T12:34:56.000000Z"
+        :views="112"
+        image="/images/no-image.jpg"
+      />
+    </div>
+    <div v-else class="a-recommended__tiles">
+      <ACard
+        v-for="i in 5"
+        :key="i"
+        :id="1"
+        title="Универсальная коляска Carello Epica"
+        slug="universalnaya-kolyaska-carello-epica"
+        :price="69990"
+        type="new"
         city="Алматы"
         date="2024-12-03T12:34:56.000000Z"
         :views="112"
@@ -56,6 +79,12 @@ const changePage = (page: number) => {
   &__list {
     display: flex;
     flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  &__tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
     gap: 24px;
     margin-bottom: 40px;
   }

@@ -22,7 +22,7 @@ import ACategory from '@/components/UI/ACategory.vue'
   grid-template-columns: repeat(3, 1fr) 2fr;
   gap: 16px;
   margin-top: 24px;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   &__all {
     border: 1px solid #ff2c20;
     :deep(p) {

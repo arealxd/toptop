@@ -93,6 +93,11 @@ const socialIcons = [
         display: flex;
         align-items: center;
         gap: 16px;
+        & img {
+          &:hover {
+            opacity: 0.7;
+          }
+        }
       }
       ul {
         display: flex;
