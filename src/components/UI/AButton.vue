@@ -10,6 +10,7 @@ interface Props {
   loading?: boolean
   preIcon?: string | null
   postIcon?: string | null
+  buttonType?: 'button' | 'submit'
 }
 
 withDefaults(defineProps<Props>(), {
@@ -22,13 +23,15 @@ withDefaults(defineProps<Props>(), {
   disabled: false,
   loading: false,
   preIcon: null,
-  postIcon: null
+  postIcon: null,
+  buttonType: 'button'
 })
 </script>
 
 <template>
   <button
     class="a-button"
+    :type="buttonType"
     :class="{
       large: size === 'large',
       medium: size === 'medium',
@@ -105,6 +108,7 @@ withDefaults(defineProps<Props>(), {
   border: none;
   span {
     color: v-bind(color);
+    text-decoration: underline;
   }
   &:hover {
     opacity: 0.7;

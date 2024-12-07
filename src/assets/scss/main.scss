@@ -7,3 +7,7 @@
   padding: 0 16px;
   box-sizing: border-box;
 }
+
+.red-fill {
+  filter: brightness(0) saturate(100%) invert(17%) sepia(92%) saturate(6020%) hue-rotate(10deg) brightness(101%) contrast(130%);
+}

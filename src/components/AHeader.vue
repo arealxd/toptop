@@ -1,15 +1,24 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { watch } from 'vue'
+import { useRouter } from 'vue-router'
 import ALogo from '@/components/UI/ALogo.vue'
-import AButton from '@/components/UI/AButton.vue'
 
+const router = useRouter()
 const { t } = useI18n()
 const { locale } = useI18n()
 
 const setLocale = (value: string): void => {
   locale.value = value
   document.cookie = `locale=${value}; max-age=${60 * 60 * 24 * 30}`
+}
+
+const openProfile = (): void => {
+  if (localStorage.getItem('access-token')) {
+    router.push('/profile')
+  } else {
+    router.push('/auth')
+  }
 }
 
 watch(locale, (value) => {
@@ -29,10 +38,8 @@ watch(locale, (value) => {
         <router-link to="/" class="header__actions--message">
           <img src="/icons/message.svg" alt="message" />
         </router-link>
-        <select name="profile" id="profile" class="header__actions--profile">
+        <select @click="openProfile" name="profile" id="profile" class="header__actions--profile">
           <option value="" disabled selected hidden>{{ t('header.personalProfile') }}</option>
-          <option value="Profile">Profile</option>
-          <option value="Profile">Exit</option>
         </select>
         <select v-model="locale" name="lang" id="lang" class="header__actions--lang">
           <option value="ru">RU</option>

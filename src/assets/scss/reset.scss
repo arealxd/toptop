@@ -67,3 +67,16 @@ section,
 summary {
   display: block;
 }
+
+input {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+input::placeholder {
+  color: #CACACA;
+}
+
+input:focus {
+  border: 1px solid #3347F6 !important;
+}
