@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router'
 import { formatDate } from '@/composables/useFormatDate'
 import AButton from '@/components/UI/AButton.vue'
+import ACard from '@/components/UI/ACard.vue'
 
 const route = useRoute()
 const call = (phone: string) => {
@@ -60,7 +61,106 @@ const call = (phone: string) => {
         </div>
       </div>
     </div>
-    <div class="description"></div>
+    <div class="a-detail__chars">
+      <p class="a-detail__chars--title">Характеристики</p>
+      <div class="info-block">
+        <div class="info-block__item">
+          <span class="info-block__label">Состояние:</span>
+          <span class="info-block__value">Б/у</span>
+        </div>
+        <div class="info-block__item">
+          <span class="info-block__label">Основной цвет:</span>
+          <span class="info-block__value">черный</span>
+        </div>
+        <div class="info-block__item">
+          <span class="info-block__label">Максимальный возраст:</span>
+          <span class="info-block__value">до 3-х лет</span>
+        </div>
+        <div class="info-block__item">
+          <span class="info-block__label">Размеры:</span>
+          <span class="info-block__value">55x21x67</span>
+        </div>
+        <div class="info-block__item">
+          <span class="info-block__label">Тип:</span>
+          <span class="info-block__value">коляска прогулочная</span>
+        </div>
+        <div class="info-block__item">
+          <span class="info-block__label">Механизм складывания:</span>
+          <span class="info-block__value">книжка</span>
+        </div>
+        <div class="info-block__item">
+          <span class="info-block__label">Положение спинки:</span>
+          <span class="info-block__value">сидя, полулежа, лежа</span>
+        </div>
+        <div class="info-block__item">
+          <span class="info-block__label">Материал:</span>
+          <span class="info-block__value">ткань</span>
+        </div>
+        <div class="info-block__item">
+          <span class="info-block__label">Регулировка высоты ручки:</span>
+          <span class="info-block__value">Да</span>
+        </div>
+        <div class="info-block__item">
+          <span class="info-block__label">Возможность регулировки:</span>
+          <span class="info-block__value">перестановка блока лицом</span>
+        </div>
+        <div class="info-block__item">
+          <span class="info-block__label">Перестановка блока лицом/спиной:</span>
+          <span class="info-block__value">Да</span>
+        </div>
+        <div class="info-block__item">
+          <span class="info-block__label">Вес:</span>
+          <span class="info-block__value">9.0 кг</span>
+        </div>
+      </div>
+    </div>
+    <div class="a-detail__description">
+      <p class="a-detail__description--title">Описание</p>
+      <p class="a-detail__description--text">
+        Коляска Luxmоm 3 в 1. Пoкупали в магазине за 36т. cоcтояниe,кaк нoвoе,пoэтoму такaя цeнa.куплeнa в 2023году, пользовались несколькo рaз,пo пpичинe ,что купили новую. c кoляской в кoмплектe идёт автoлюлькa. всё в xopошeм coстoянии. Сaмa люлька нa коляске мeняeт свое пoложениe, мoжнo гулять с pебeнкoм и oн будет видeть Baс,a можно поменять положение и ребенок будет видеть все, что происходит вокруг. так же положение сидя можно сделать за счёт ремней. !!!С реальным покупателем могу обговорить конечную цену!!!!!!
+      </p>
+    </div>
+    <div class="a-detail__other-ads">
+      <div class="a-detail__other-ads--title">
+        <p class="text">Другие объявления продавца</p>
+        <p class="count">233</p>
+        <img src="/icons/arrow-27.svg" alt="arrow">
+      </div>
+      <div class="a-detail__other-ads--items">
+        <ACard
+          v-for="i in 4"
+          :key="i"
+          :id="1"
+          title="Универсальная коляска Carello Epica"
+          slug="universalnaya-kolyaska-carello-epica"
+          :price="25000"
+          type="new"
+          city="Алматы"
+          date="2024-12-03T12:34:56.000000Z"
+          :views="112"
+          image="/images/no-image.jpg"
+        />
+      </div>
+    </div>
+    <div class="a-detail__similar">
+      <div class="a-detail__similar--title">Похожие</div>
+      <div class="a-detail__similar--items">
+        <ACard
+          v-for="i in 4"
+          :key="i"
+          :id="1"
+          title="Универсальная коляска Carello Epica"
+          slug="universalnaya-kolyaska-carello-epica"
+          :price="25000"
+          type="new"
+          city="Алматы"
+          date="2024-12-03T12:34:56.000000Z"
+          :views="112"
+          image="/images/no-image.jpg"
+        />
+      </div>
+    </div>
+    <AButton class="a-detail__all" type="outlined" title="Все объявления" />
   </div>
 </template>
 
@@ -256,6 +356,134 @@ const call = (phone: string) => {
         margin-top: 37px;
       }
     }
+  }
+  &__chars {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+    &--title {
+      color: #FF5100;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 14px;
+    }
+    .info-block {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      row-gap: 24px;
+      column-gap: 100px;
+    }
+    .info-block__item {
+      display: flex;
+      justify-content: space-between;
+    }
+    .info-block__label {
+      color: #898989;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 14px;
+    }
+    .info-block__value {
+      color: #000;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 14px;
+    }
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #D9D9D9;
+    &--title {
+      color: #3347F6;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 14px;
+    }
+    &--text {
+      color: #000;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+  &__other-ads {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 32px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #D9D9D9;
+    &--title {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: fit-content;
+      &:hover {
+        .text {
+          text-shadow: 0 0 1px #3347F6;
+        }
+      }
+      .text {
+        color: #3347F6;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px;
+      }
+      .count {
+        color: #3347F6;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        margin-right: 16px;
+        margin-left: 24px;
+      }
+    }
+    &--items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 40px;
+    }
+  }
+  &__similar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 32px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #D9D9D9;
+    &--title {
+      color: #000;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px;
+    }
+    &--items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 40px;
+    }
+  }
+  &__all {
+    max-width: 343px;
+    margin-top: 32px;
+    margin-bottom: 80px;
   }
 }
 </style>
