@@ -1,29 +1,23 @@
 <script setup lang="ts">
+
 import ABreadcrumbs from '@/components/UI/ABreadcrumbs.vue'
-import ADetail from '@/components/Product/ADetail.vue'
-import { useRoute } from 'vue-router'
 import ASearch from '@/components/UI/ASearch.vue'
-
-window.scrollTo(0, 0);
-
-const route = useRoute()
 
 const breadcrumbs = [
   { title: 'Главная', url: '/' },
-  { title: 'Коляски', url: `/product/${route.params.slug}` }
+  { title: 'Профиль', url: '/profile' }
 ]
 </script>
 
 <template>
-  <div class="product-view container">
+  <div class="profile-view container">
     <ASearch />
-    <ABreadcrumbs :breadcrumbs="breadcrumbs" class="product-view__breadcrumbs" />
-    <ADetail />
+    <ABreadcrumbs :breadcrumbs="breadcrumbs" class="profile-view__breadcrumbs" />
   </div>
 </template>
 
 <style scoped lang="scss">
-.product-view {
+.profile-view {
   display: flex;
   flex-direction: column;
   &__breadcrumbs {

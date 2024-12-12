@@ -6,6 +6,8 @@ import ARecommended from '@/components/ARecommended.vue'
 import ATop from '@/components/ATop.vue'
 import ViewTypes from '@/components/ViewTypes.vue'
 
+window.scrollTo(0, 0);
+
 const homeStore = useHomeStore()
 
 const setAdType = (type: 'sale' | 'rent') => {

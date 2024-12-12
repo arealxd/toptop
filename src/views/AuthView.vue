@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import ALogo from '@/components/UI/ALogo.vue'
 import AButton from '@/components/UI/AButton.vue'
 
+window.scrollTo(0, 0);
+
 const route = useRoute()
+const router = useRouter()
 const authType = ref<'login' | 'registration'>('login')
 const passwordType = ref<'password' | 'text'>('password')
 const repeatPasswordType = ref<'password' | 'text'>('password')
@@ -37,6 +40,7 @@ const toggleAuthType = () => {
 }
 
 const authAction = () => {
+  router.push('/profile')
   if (authType.value === 'login') {
     authLogin()
   } else {
