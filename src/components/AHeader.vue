@@ -38,6 +38,9 @@ watch(locale, (value) => {
         <router-link to="/" class="header__actions--message">
           <img src="/icons/message.svg" alt="message" />
         </router-link>
+        <router-link to="/favorites" class="header__actions--message">
+          <img src="/icons/favorites.svg" alt="favorites" />
+        </router-link>
         <select @click="openProfile" name="profile" id="profile" class="header__actions--profile">
           <option value="" disabled selected hidden>{{ t('header.personalProfile') }}</option>
         </select>

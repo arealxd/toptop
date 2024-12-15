@@ -3,6 +3,7 @@ import { formatDate } from '@/composables/useFormatDate'
 
 interface Props {
   id: number
+  isFavorite: boolean
   slug: string
   title: string
   description: string
@@ -51,7 +52,11 @@ defineProps<Props>()
         <p v-if="newest" class="newest">новое</p>
         <p v-if="top" class="newest top" :class="{ 'white-top': whiteNew }">ТОП</p>
       </div>
-      <img class="favorite" src="/icons/favorite-disabled.svg" alt="favorite-disabled" />
+      <img
+        class="favorite"
+        :src="`/icons/favorite-${isFavorite ? 'active' : 'disabled'}.svg`"
+        alt="favorite-disabled"
+      />
     </div>
   </div>
 </template>

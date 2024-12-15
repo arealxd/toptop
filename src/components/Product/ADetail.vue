@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { formatDate } from '@/composables/useFormatDate'
 import AButton from '@/components/UI/AButton.vue'
 import ACard from '@/components/UI/ACard.vue'
 
 const route = useRoute()
+const isFavorite = ref<boolean>(false)
 const call = (phone: string) => {
   window.open(`tel:${phone}`)
 }
@@ -35,7 +37,11 @@ const call = (phone: string) => {
               <span>30</span>
             </div>
             <img class="share" src="/icons/share.svg" alt="share" />
-            <img class="favorite" src="/icons/favorite-disabled.svg" alt="favorite" />
+            <img
+              class="favorite"
+              :src="`/icons/favorite-${isFavorite ? 'active' : 'disabled'}.svg`"
+              alt="favorite"
+            />
           </div>
         </div>
         <div class="author">
@@ -117,20 +123,26 @@ const call = (phone: string) => {
     <div class="a-detail__description">
       <p class="a-detail__description--title">Описание</p>
       <p class="a-detail__description--text">
-        Коляска Luxmоm 3 в 1. Пoкупали в магазине за 36т. cоcтояниe,кaк нoвoе,пoэтoму такaя цeнa.куплeнa в 2023году, пользовались несколькo рaз,пo пpичинe ,что купили новую. c кoляской в кoмплектe идёт автoлюлькa. всё в xopошeм coстoянии. Сaмa люлька нa коляске мeняeт свое пoложениe, мoжнo гулять с pебeнкoм и oн будет видeть Baс,a можно поменять положение и ребенок будет видеть все, что происходит вокруг. так же положение сидя можно сделать за счёт ремней. !!!С реальным покупателем могу обговорить конечную цену!!!!!!
+        Коляска Luxmоm 3 в 1. Пoкупали в магазине за 36т. cоcтояниe,кaк нoвoе,пoэтoму такaя
+        цeнa.куплeнa в 2023году, пользовались несколькo рaз,пo пpичинe ,что купили новую. c кoляской
+        в кoмплектe идёт автoлюлькa. всё в xopошeм coстoянии. Сaмa люлька нa коляске мeняeт свое
+        пoложениe, мoжнo гулять с pебeнкoм и oн будет видeть Baс,a можно поменять положение и
+        ребенок будет видеть все, что происходит вокруг. так же положение сидя можно сделать за счёт
+        ремней. !!!С реальным покупателем могу обговорить конечную цену!!!!!!
       </p>
     </div>
     <div class="a-detail__other-ads">
       <div class="a-detail__other-ads--title">
         <p class="text">Другие объявления продавца</p>
         <p class="count">233</p>
-        <img src="/icons/arrow-27.svg" alt="arrow">
+        <img src="/icons/arrow-27.svg" alt="arrow" />
       </div>
       <div class="a-detail__other-ads--items">
         <ACard
           v-for="i in 4"
           :key="i"
           :id="1"
+          is-favorite
           title="Универсальная коляска Carello Epica"
           slug="universalnaya-kolyaska-carello-epica"
           :price="25000"
@@ -149,6 +161,7 @@ const call = (phone: string) => {
           v-for="i in 4"
           :key="i"
           :id="1"
+          is-favorite
           title="Универсальная коляска Carello Epica"
           slug="universalnaya-kolyaska-carello-epica"
           :price="25000"
@@ -365,10 +378,10 @@ const call = (phone: string) => {
     margin-bottom: 32px;
     padding-top: 32px;
     padding-bottom: 32px;
-    border-top: 1px solid #D9D9D9;
-    border-bottom: 1px solid #D9D9D9;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
     &--title {
-      color: #FF5100;
+      color: #ff5100;
       font-size: 24px;
       font-style: normal;
       font-weight: 700;
@@ -404,9 +417,9 @@ const call = (phone: string) => {
     flex-direction: column;
     gap: 24px;
     padding-bottom: 32px;
-    border-bottom: 1px solid #D9D9D9;
+    border-bottom: 1px solid #d9d9d9;
     &--title {
-      color: #3347F6;
+      color: #3347f6;
       font-size: 24px;
       font-style: normal;
       font-weight: 700;
@@ -426,7 +439,7 @@ const call = (phone: string) => {
     gap: 24px;
     padding-top: 32px;
     padding-bottom: 40px;
-    border-bottom: 1px solid #D9D9D9;
+    border-bottom: 1px solid #d9d9d9;
     &--title {
       display: flex;
       align-items: center;
@@ -434,18 +447,18 @@ const call = (phone: string) => {
       width: fit-content;
       &:hover {
         .text {
-          text-shadow: 0 0 1px #3347F6;
+          text-shadow: 0 0 1px #3347f6;
         }
       }
       .text {
-        color: #3347F6;
+        color: #3347f6;
         font-size: 18px;
         font-style: normal;
         font-weight: 700;
         line-height: 24px;
       }
       .count {
-        color: #3347F6;
+        color: #3347f6;
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
@@ -466,7 +479,7 @@ const call = (phone: string) => {
     gap: 24px;
     padding-top: 32px;
     padding-bottom: 30px;
-    border-bottom: 1px solid #D9D9D9;
+    border-bottom: 1px solid #d9d9d9;
     &--title {
       color: #000;
       font-size: 18px;

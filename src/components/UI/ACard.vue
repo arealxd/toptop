@@ -3,6 +3,7 @@ import { formatDate } from '@/composables/useFormatDate'
 
 interface Props {
   id: number
+  isFavorite: boolean
   slug: string
   title: string
   price: number
@@ -19,10 +20,16 @@ defineProps<Props>()
 
 <template>
   <div class="a-card">
-    <router-link :to="`/product/${slug}`" class="a-card__image-wrapper">
-      <img class="a-card__image" :src="image" :alt="title" />
-      <img class="a-card__favorite" src="/icons/favorite-disabled-wrapped.svg" alt="favorite" />
-    </router-link>
+    <div class="a-card__image-wrapper">
+      <router-link :to="`/product/${slug}`">
+        <img class="a-card__image" :src="image" :alt="title" />
+      </router-link>
+      <img
+        class="a-card__favorite"
+        :src="`/icons/favorite-${isFavorite ? 'active' : 'disabled'}-wrapped.svg`"
+        alt="favorite"
+      />
+    </div>
     <router-link :to="`/product/${slug}`" class="a-card__title">
       {{ title }}
     </router-link>

@@ -4,7 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import ALogo from '@/components/UI/ALogo.vue'
 import AButton from '@/components/UI/AButton.vue'
 
-window.scrollTo(0, 0);
+window.scrollTo(0, 0)
 
 const route = useRoute()
 const router = useRouter()

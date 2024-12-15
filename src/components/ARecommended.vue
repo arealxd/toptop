@@ -29,6 +29,7 @@ const changePage = (page: number) => {
         v-for="i in 3"
         :key="i"
         :id="1"
+        is-favorite
         title="Универсальная коляска Carello Epica"
         slug="universalnaya-kolyaska-carello-epica"
         description="Коляска Luxmоm 3 в 1. Пoкупали в магазине за 36т. cоcтояниe,кaк нoвoе,пoэтoму такaя цeнa.куплeнa в 2023году, пользовались несколькo рaз,пo пpичинe ,что купили новую. c кoляской в кoмплектe идёт..."
@@ -47,6 +48,7 @@ const changePage = (page: number) => {
         v-for="i in 5"
         :key="i"
         :id="1"
+        is-favorite
         title="Универсальная коляска Carello Epica"
         slug="universalnaya-kolyaska-carello-epica"
         :price="69990"
