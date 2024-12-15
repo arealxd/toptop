@@ -27,6 +27,11 @@ const router = createRouter({
       path: '/favorites',
       name: 'favorites',
       component: () => import('../views/FavoritesView.vue')
+    },
+    {
+      path: '/my-ads',
+      name: 'my-ads',
+      component: () => import('../views/MyAdsView.vue')
     }
   ]
 })

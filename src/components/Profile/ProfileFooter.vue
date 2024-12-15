@@ -28,7 +28,7 @@ const toggleModal = () => {
       </div>
     </AModal>
     <div class="profile-footer__my-ads">
-      <RouterLink to="/profile" class="profile-footer__my-ads--title">
+      <RouterLink to="/my-ads" class="profile-footer__my-ads--title">
         <p>Мои объявления</p>
         <img src="/icons/arrow-27.svg" alt="arrow" />
       </RouterLink>
