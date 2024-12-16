@@ -37,6 +37,11 @@ const router = createRouter({
       path: '/public-ad/:slug',
       name: 'public-ad',
       component: () => import('../views/PublicAdView.vue')
+    },
+    {
+      path: '/chat',
+      name: 'chat',
+      component: () => import('../views/ChatView.vue')
     }
   ]
 })

@@ -35,7 +35,7 @@ watch(locale, (value) => {
           <img src="/icons/plus_circle.svg" alt="plus" />
           <p>{{ t('header.postAd') }}</p>
         </router-link>
-        <router-link to="/" class="header__actions--message">
+        <router-link to="/chat" class="header__actions--message">
           <img src="/icons/message.svg" alt="message" />
         </router-link>
         <router-link to="/favorites" class="header__actions--message">
