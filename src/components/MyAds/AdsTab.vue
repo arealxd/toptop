@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import LongCard from '@/components/UI/LongCard.vue'
 import AButton from '@/components/UI/AButton.vue'
 import AModal from '@/components/UI/AModal.vue'
 
+const router = useRouter()
 const route = useRoute()
 const activeTab = ref<number>(1)
 const deleteModalVisible = ref<boolean>(false)
@@ -76,7 +77,13 @@ const setActiveTab = (tab: number) => {
               gap="10px"
               background="#FF5100"
             />
-            <AButton class="button" title="Редактировать" pre-icon="edit" gap="10px" />
+            <AButton
+              @click="router.push('/public-ad/universalnaya-kolyaska-carello-epica?type=edit')"
+              class="button"
+              title="Редактировать"
+              pre-icon="edit"
+              gap="10px"
+            />
             <AButton
               @click="toggleDeleteModal"
               class="button"

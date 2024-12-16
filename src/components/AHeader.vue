@@ -31,7 +31,7 @@ watch(locale, (value) => {
     <div class="container header">
       <ALogo />
       <div class="header__actions">
-        <router-link to="/" class="header__actions--plus">
+        <router-link to="/public-ad/new" class="header__actions--plus">
           <img src="/icons/plus_circle.svg" alt="plus" />
           <p>{{ t('header.postAd') }}</p>
         </router-link>

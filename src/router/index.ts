@@ -32,6 +32,11 @@ const router = createRouter({
       path: '/my-ads',
       name: 'my-ads',
       component: () => import('../views/MyAdsView.vue')
+    },
+    {
+      path: '/public-ad/:slug',
+      name: 'public-ad',
+      component: () => import('../views/PublicAdView.vue')
     }
   ]
 })
