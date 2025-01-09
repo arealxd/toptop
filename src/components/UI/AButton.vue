@@ -17,7 +17,7 @@ withDefaults(defineProps<Props>(), {
   title: 'Button',
   size: 'large',
   type: 'colored',
-  background: '#3347F6',
+  background: '#3C9462',
   color: '#fff',
   gap: '16px',
   disabled: false,
@@ -63,7 +63,7 @@ withDefaults(defineProps<Props>(), {
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px;
+    line-height: normal;
   }
 }
 .large {

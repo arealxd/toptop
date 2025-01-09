@@ -36,7 +36,7 @@ defineProps<Props>()
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 14px;
+    line-height: normal;
     text-decoration: underline;
     &:hover {
       color: #000;

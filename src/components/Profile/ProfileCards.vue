@@ -55,7 +55,7 @@ import AButton from '@/components/UI/AButton.vue'
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
-        line-height: 14px;
+        line-height: normal;
       }
       .money {
         color: #000;
@@ -94,7 +94,7 @@ import AButton from '@/components/UI/AButton.vue'
         font-size: 24px;
         font-style: normal;
         font-weight: 700;
-        line-height: 14px;
+        line-height: normal;
       }
       img {
         filter: brightness(0) saturate(100%) invert(25%) sepia(0%) saturate(1241%)

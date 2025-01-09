@@ -149,7 +149,7 @@ const uploadFile = (e: Event) => {
       font-size: 20px;
       font-style: normal;
       font-weight: 600;
-      line-height: 14px;
+      line-height: normal;
     }
     .buttons {
       display: flex;

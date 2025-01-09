@@ -106,7 +106,7 @@ const visiblePages = computed(() => {
     gap: 4px;
   }
   &__number {
-    color: #3347f6;
+    color: #3c9462;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -121,7 +121,7 @@ const visiblePages = computed(() => {
   }
   .active-page {
     color: white;
-    background: #3347f6;
+    background: #3c9462;
   }
   &__dots {
     cursor: default;

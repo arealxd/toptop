@@ -57,7 +57,7 @@ const toggleModal = () => {
       font-size: 20px;
       font-style: normal;
       font-weight: 600;
-      line-height: 14px;
+      line-height: normal;
     }
     .buttons {
       display: flex;
@@ -81,21 +81,21 @@ const toggleModal = () => {
       align-items: center;
       gap: 16px;
       p {
-        color: #3347f6;
+        color: #3c9462;
         font-size: 24px;
         font-style: normal;
         font-weight: 700;
-        line-height: 14px;
+        line-height: normal;
       }
     }
   }
   &__delete {
     width: fit-content;
-    color: #ff2c20;
-    font-size: 24px;
+    color: #3c9462;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    line-height: 14px;
+    line-height: normal;
     &:hover {
       text-decoration: underline;
     }

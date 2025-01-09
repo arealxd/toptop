@@ -70,14 +70,14 @@ import AButton from '@/components/UI/AButton.vue'
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
-      line-height: 20px;
+      line-height: normal;
     }
     &--city {
-      color: #3347f6;
+      color: #3c9462;
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
-      line-height: 20px;
+      line-height: normal;
       border: none;
       outline: none;
       cursor: pointer;

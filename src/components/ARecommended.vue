@@ -75,7 +75,7 @@ const changePage = (page: number) => {
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px;
+    line-height: normal;
     margin-bottom: 16px;
   }
   &__list {

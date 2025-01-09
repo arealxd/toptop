@@ -84,7 +84,7 @@ defineProps<Props>()
     flex-direction: column;
     &--title {
       width: fit-content;
-      color: #3347f6;
+      color: #3c9462;
       font-size: 18px;
       font-style: normal;
       font-weight: 500;
@@ -99,7 +99,7 @@ defineProps<Props>()
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
-      line-height: 20px;
+      line-height: normal;
       margin-top: 16px;
       margin-bottom: 8px;
       overflow: hidden;
@@ -119,7 +119,7 @@ defineProps<Props>()
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
-        line-height: 14px;
+        line-height: normal;
         text-align: center;
         padding: 4px 8px;
       }
@@ -141,7 +141,7 @@ defineProps<Props>()
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
-        line-height: 14px;
+        line-height: normal;
       }
       .views {
         display: flex;
@@ -172,7 +172,7 @@ defineProps<Props>()
         padding: 4px 8px;
         border-radius: 8px;
         background: #ededed;
-        color: #3347f6;
+        color: #3c9462;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;

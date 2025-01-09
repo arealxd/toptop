@@ -66,7 +66,7 @@ const setActiveTab = (id: number) => {
     }
     .active {
       color: #2b2f32;
-      border-bottom: 3px solid #1b59f8;
+      border-bottom: 3px solid #3c9462;
       &:hover {
         background: none;
       }

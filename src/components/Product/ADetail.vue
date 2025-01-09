@@ -217,7 +217,7 @@ const call = (phone: string) => {
         }
         .new {
           border-radius: 12px;
-          background: #3347f6;
+          background: #3c9462;
           position: absolute;
           bottom: 16px;
           right: 10px;
@@ -267,7 +267,7 @@ const call = (phone: string) => {
             font-size: 18px;
             font-style: normal;
             font-weight: 400;
-            line-height: 14px;
+            line-height: normal;
           }
         }
         .indicators {
@@ -283,7 +283,7 @@ const call = (phone: string) => {
               font-size: 16px;
               font-style: normal;
               font-weight: 400;
-              line-height: 14px;
+              line-height: normal;
             }
           }
           .share,
@@ -317,14 +317,14 @@ const call = (phone: string) => {
               font-size: 18px;
               font-style: normal;
               font-weight: 700;
-              line-height: 14px;
+              line-height: normal;
             }
             .role {
               color: #898989;
               font-size: 16px;
               font-style: normal;
               font-weight: 400;
-              line-height: 14px;
+              line-height: normal;
             }
           }
         }
@@ -339,14 +339,14 @@ const call = (phone: string) => {
             font-size: 16px;
             font-style: normal;
             font-weight: 400;
-            line-height: 14px;
+            line-height: normal;
           }
           .value {
             color: #000;
             font-size: 18px;
             font-style: normal;
             font-weight: 400;
-            line-height: 14px;
+            line-height: normal;
           }
         }
       }
@@ -359,7 +359,7 @@ const call = (phone: string) => {
           font-size: 20px;
           font-style: normal;
           font-weight: 400;
-          line-height: 14px;
+          line-height: normal;
         }
       }
       .buttons {
@@ -385,7 +385,7 @@ const call = (phone: string) => {
       font-size: 24px;
       font-style: normal;
       font-weight: 700;
-      line-height: 14px;
+      line-height: normal;
     }
     .info-block {
       display: grid;
@@ -402,14 +402,14 @@ const call = (phone: string) => {
       font-size: 18px;
       font-style: normal;
       font-weight: 400;
-      line-height: 14px;
+      line-height: normal;
     }
     .info-block__value {
       color: #000;
       font-size: 18px;
       font-style: normal;
       font-weight: 400;
-      line-height: 14px;
+      line-height: normal;
     }
   }
   &__description {
@@ -419,11 +419,11 @@ const call = (phone: string) => {
     padding-bottom: 32px;
     border-bottom: 1px solid #d9d9d9;
     &--title {
-      color: #3347f6;
+      color: #3c9462;
       font-size: 24px;
       font-style: normal;
       font-weight: 700;
-      line-height: 14px;
+      line-height: normal;
     }
     &--text {
       color: #000;
@@ -447,22 +447,22 @@ const call = (phone: string) => {
       width: fit-content;
       &:hover {
         .text {
-          text-shadow: 0 0 1px #3347f6;
+          text-shadow: 0 0 1px #3c9462;
         }
       }
       .text {
-        color: #3347f6;
+        color: #3c9462;
         font-size: 18px;
         font-style: normal;
         font-weight: 700;
-        line-height: 24px;
+        line-height: normal;
       }
       .count {
-        color: #3347f6;
+        color: #3c9462;
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
-        line-height: 24px;
+        line-height: normal;
         margin-right: 16px;
         margin-left: 24px;
       }
@@ -485,7 +485,7 @@ const call = (phone: string) => {
       font-size: 18px;
       font-style: normal;
       font-weight: 700;
-      line-height: 24px;
+      line-height: normal;
     }
     &--items {
       display: grid;

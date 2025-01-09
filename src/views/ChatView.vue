@@ -187,7 +187,7 @@ const deleteFile = () => {
       font-size: 18px;
       font-style: normal;
       font-weight: 400;
-      line-height: 14px;
+      line-height: normal;
     }
   }
   &__title {

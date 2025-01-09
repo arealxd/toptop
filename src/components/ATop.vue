@@ -60,11 +60,12 @@ defineProps<Props>()
   gap: 24px;
   margin-bottom: 24px;
   &__title {
-    color: #3347f6;
+    color: #3c9462;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px;
+    line-height: normal;
+    text-transform: uppercase;
   }
   &__tiles {
     display: grid;

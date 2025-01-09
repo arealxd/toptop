@@ -199,7 +199,7 @@ const authRegistration = async () => {
         <AButton
           @click="toggleAuthType"
           type="text"
-          color="#3347F6"
+          color="#3C9462"
           :title="
             authType === 'login' ? 'Зарегистрироваться' : 'Вы можете войти используя данные профиля'
           "
@@ -269,7 +269,7 @@ const authRegistration = async () => {
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
-        line-height: 24px;
+        line-height: normal;
         border-radius: 8px;
         border: 1px solid #e2e8f0;
         background: #fff;
@@ -290,7 +290,7 @@ const authRegistration = async () => {
         align-items: center;
         justify-content: space-between;
         .sub-text {
-          color: #1472ff;
+          color: #3c9462;
           font-size: 14px;
           font-style: normal;
           font-weight: 500;
@@ -373,7 +373,7 @@ const authRegistration = async () => {
         font-weight: 400;
         line-height: normal;
         a {
-          color: #3347f6;
+          color: #3c9462;
           &:hover {
             text-decoration: underline;
           }

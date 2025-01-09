@@ -85,7 +85,7 @@ defineProps<Props>()
     margin-top: 8px;
     margin-bottom: 16px;
     &:hover {
-      color: #3347f6;
+      color: #3c9462;
     }
   }
   &__indicators {
@@ -102,7 +102,7 @@ defineProps<Props>()
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
-      line-height: 14px;
+      line-height: normal;
       background: #ededed;
     }
     .new {
@@ -131,7 +131,7 @@ defineProps<Props>()
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
-      line-height: 14px;
+      line-height: normal;
     }
     .views {
       display: flex;

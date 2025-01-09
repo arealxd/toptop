@@ -176,7 +176,7 @@ const setActiveTab = (tab: number) => {
       font-size: 20px;
       font-style: normal;
       font-weight: 600;
-      line-height: 14px;
+      line-height: normal;
     }
     .buttons {
       display: flex;
@@ -210,7 +210,7 @@ const setActiveTab = (tab: number) => {
   }
   .active {
     color: #2b2f32;
-    border-bottom: 3px solid #1b59f8;
+    border-bottom: 3px solid #3c9462;
     &:hover {
       background: none;
     }
