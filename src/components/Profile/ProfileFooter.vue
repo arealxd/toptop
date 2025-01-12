@@ -2,11 +2,18 @@
 import { ref } from 'vue'
 import AModal from '@/components/UI/AModal.vue'
 import AButton from '@/components/UI/AButton.vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const isModalVisible = ref<boolean>(false)
 
 const toggleModal = () => {
   isModalVisible.value = !isModalVisible.value
+}
+
+const deleteAccount = () => {
+  localStorage.removeItem('access-token')
+  router.push('/auth')
 }
 </script>
 
@@ -22,7 +29,7 @@ const toggleModal = () => {
             background="#FF0000"
             color="#fff"
             title="Удалить"
-            @click="toggleModal"
+            @click="deleteAccount"
           />
         </div>
       </div>

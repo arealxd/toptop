@@ -127,4 +127,10 @@ const socialIcons = [
     }
   }
 }
+
+@media (max-width: 880px) {
+  .footer-wrapper {
+    display: none;
+  }
+}
 </style>

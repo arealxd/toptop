@@ -101,5 +101,20 @@ const changePage = (page: number) => {
     margin-top: 40px;
     margin-bottom: 20px;
   }
+  @media (max-width: 880px) {
+    margin-bottom: 30px;
+    &__more,
+    &__line,
+    .a-pagination {
+      display: none;
+    }
+    &__list,
+    &__tiles {
+      margin-bottom: 0;
+      background-color: #fff;
+      padding: 16px;
+      border-radius: 8px;
+    }
+  }
 }
 </style>

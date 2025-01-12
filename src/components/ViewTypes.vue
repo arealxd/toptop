@@ -113,4 +113,9 @@ const emit = defineEmits<{
     }
   }
 }
+@media (max-width: 880px) {
+  .view-types {
+    display: none;
+  }
+}
 </style>

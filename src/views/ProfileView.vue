@@ -4,8 +4,18 @@ import ASearch from '@/components/UI/ASearch.vue'
 import ProfileCards from '@/components/Profile/ProfileCards.vue'
 import ProfileTabs from '@/components/Profile/ProfileTabs.vue'
 import ProfileFooter from '@/components/Profile/ProfileFooter.vue'
+import { useToast } from 'vue-toastification'
+import { useRouter } from 'vue-router'
 
 window.scrollTo(0, 0)
+
+const router = useRouter()
+const toast = useToast()
+
+if (!localStorage.getItem('access-token')) {
+  router.push('/auth')
+  toast.warning('Необходимо авторизоваться')
+}
 
 const breadcrumbs = [
   { title: 'Главная', url: '/' },

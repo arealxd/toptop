@@ -1,24 +1,14 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { watch } from 'vue'
-import { useRouter } from 'vue-router'
 import ALogo from '@/components/UI/ALogo.vue'
 
-const router = useRouter()
 const { t } = useI18n()
 const { locale } = useI18n()
 
 const setLocale = (value: string): void => {
   locale.value = value
   document.cookie = `locale=${value}; max-age=${60 * 60 * 24 * 30}`
-}
-
-const openProfile = (): void => {
-  if (localStorage.getItem('access-token')) {
-    router.push('/profile')
-  } else {
-    router.push('/auth')
-  }
 }
 
 watch(locale, (value) => {
@@ -41,9 +31,9 @@ watch(locale, (value) => {
         <router-link to="/favorites" class="header__actions--message">
           <img src="/icons/favorites.svg" alt="favorites" />
         </router-link>
-        <select @click="openProfile" name="profile" id="profile" class="header__actions--profile">
-          <option value="" disabled selected hidden>{{ t('header.personalProfile') }}</option>
-        </select>
+        <router-link to="/profile" class="header__actions--profile">
+          {{ t('header.personalProfile') }}
+        </router-link>
         <select v-model="locale" name="lang" id="lang" class="header__actions--lang">
           <option value="ru">RU</option>
           <option value="kk">KZ</option>
@@ -101,6 +91,12 @@ watch(locale, (value) => {
       padding-left: 23px;
       border-left: 1px solid #edebeb;
     }
+  }
+}
+
+@media (max-width: 880px) {
+  .header-wrapper {
+    display: none;
   }
 }
 </style>

@@ -5,8 +5,9 @@ import HomeCategories from '@/components/HomeCategories.vue'
 import ARecommended from '@/components/ARecommended.vue'
 import ATop from '@/components/ATop.vue'
 import ViewTypes from '@/components/ViewTypes.vue'
+import PageHeader from '@/components/Mobile/PageHeader.vue'
 
-window.scrollTo(0, 0);
+window.scrollTo(0, 0)
 
 const homeStore = useHomeStore()
 
@@ -20,9 +21,11 @@ const setViewType = (view: 'tiles' | 'list') => {
 </script>
 
 <template>
+  <PageHeader />
   <div class="home container">
     <ASearch />
     <img src="/images/banner.png" alt="banner" class="home__banner" />
+    <img src="/images/banner-mobile.svg" alt="banner" class="home__banner-mobile" />
     <HomeCategories />
     <ViewTypes
       :ad-type="homeStore.adType"
@@ -39,6 +42,20 @@ const setViewType = (view: 'tiles' | 'list') => {
 .home {
   &__banner {
     width: 100%;
+  }
+  &__banner-mobile {
+    display: none;
+  }
+}
+@media (max-width: 880px) {
+  .home {
+    &__banner {
+      display: none;
+    }
+    &__banner-mobile {
+      display: flex;
+      width: 100%;
+    }
   }
 }
 </style>

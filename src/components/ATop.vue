@@ -83,5 +83,11 @@ defineProps<Props>()
     border-radius: 8px;
     background: #fce8cb;
   }
+  @media (max-width: 880px) {
+    gap: 16px;
+    &__title {
+      font-size: 20px;
+    }
+  }
 }
 </style>

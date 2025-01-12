@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ALogo from '@/components/UI/ALogo.vue'
 import AButton from '@/components/UI/AButton.vue'
+import PageTitle from '@/components/Mobile/PageTitle.vue'
 
 window.scrollTo(0, 0)
 
@@ -40,7 +41,6 @@ const toggleAuthType = () => {
 }
 
 const authAction = () => {
-  router.push('/profile')
   if (authType.value === 'login') {
     authLogin()
   } else {
@@ -51,9 +51,10 @@ const authAction = () => {
 const authLogin = async () => {
   if (!login.value || !password.value) {
     return
+  } else {
+    localStorage.setItem('access-token', 'asdasdasd12321')
+    await router.push('/profile')
   }
-
-  console.log('login')
 }
 
 const authRegistration = async () => {
@@ -64,13 +65,15 @@ const authRegistration = async () => {
     !passwordsMatch.value
   ) {
     return
+  } else {
+    localStorage.setItem('access-token', 'asdasdasd12321')
+    await router.push('/profile')
   }
-
-  console.log('registration')
 }
 </script>
 
 <template>
+  <PageTitle />
   <div class="auth-view container">
     <img class="auth-view__bg" src="/images/auth-bg.png" alt="auth-bg" />
     <div class="auth-view__title">
@@ -210,6 +213,9 @@ const authRegistration = async () => {
 </template>
 
 <style scoped lang="scss">
+.page-title {
+  display: none;
+}
 .auth-view {
   display: flex;
   flex-direction: column;
@@ -378,6 +384,59 @@ const authRegistration = async () => {
             text-decoration: underline;
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 880px) {
+  .page-title {
+    display: block;
+    margin-top: 22px;
+  }
+  .auth-view {
+    margin-top: 24px;
+    background: #fff;
+    align-items: center;
+    &__bg {
+      display: none;
+    }
+    &__title {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 60px;
+      margin-bottom: 24px;
+      gap: 16px;
+      &--welcome {
+        font-size: 20px;
+      }
+      &--description {
+        font-size: 16px;
+      }
+    }
+    &__form {
+      width: 100%;
+      padding-bottom: 48px;
+      &--remember {
+        display: none;
+      }
+      &--submits {
+        margin-top: 0;
+        :deep(.a-button) {
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+      .confirmations {
+        margin-bottom: 24px;
+      }
+      .login-password {
+        margin-top: 24px;
+        margin-bottom: 32px;
+      }
+      .repeat-password {
+        margin-top: -8px;
       }
     }
   }

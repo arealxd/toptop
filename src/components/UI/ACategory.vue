@@ -28,8 +28,14 @@ defineProps<Props>()
     font-weight: 500;
     line-height: normal;
   }
-  &:hover {
-    background-color: #ececec;
+  @media (max-width: 880px) {
+    background: #fff no-repeat right bottom;
+    padding: 8px;
+    background-size: 90px;
+    &__title {
+      color: #5b5b5b;
+      font-size: 14px;
+    }
   }
 }
 </style>

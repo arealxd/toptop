@@ -84,4 +84,18 @@ import AButton from '@/components/UI/AButton.vue'
     }
   }
 }
+@media (max-width: 880px) {
+  .a-search {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    &__input {
+      border: 1px solid #f8fafc;
+      background: #f8fafc;
+    }
+    &__catalog,
+    &__city {
+      display: none;
+    }
+  }
+}
 </style>
