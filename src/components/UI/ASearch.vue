@@ -1,9 +1,29 @@
 <script setup lang="ts">
 import AButton from '@/components/UI/AButton.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+interface Props {
+  isArrowBack?: boolean
+}
+
+defineProps<Props>()
+
+const goBack = () => {
+  router.go(-1)
+}
 </script>
 
 <template>
   <div class="a-search">
+    <img
+      v-if="isArrowBack"
+      @click="goBack"
+      src="/icons/arrow-27.svg"
+      class="black-fill rotate-180 a-search__arrow"
+      alt="arrow"
+    />
     <AButton title="Категории" pre-icon="category" class="a-search__catalog" />
     <div class="a-search__search">
       <img src="/icons/search.svg" alt="search" class="search-icon" />
@@ -26,6 +46,10 @@ import AButton from '@/components/UI/AButton.vue'
   align-items: center;
   margin: 24px 0;
   gap: 8px;
+  &__arrow {
+    display: none;
+    margin-right: 8px;
+  }
   &__catalog {
     max-width: 196px;
   }
@@ -88,6 +112,9 @@ import AButton from '@/components/UI/AButton.vue'
   .a-search {
     margin-top: 16px;
     margin-bottom: 8px;
+    &__arrow {
+      display: block;
+    }
     &__input {
       border: 1px solid #f8fafc;
       background: #f8fafc;

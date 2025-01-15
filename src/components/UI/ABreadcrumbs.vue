@@ -46,5 +46,8 @@ defineProps<Props>()
     text-decoration: none;
     margin: 0 4px 0 2px;
   }
+  @media (max-width: 880px) {
+    display: none;
+  }
 }
 </style>

@@ -25,6 +25,7 @@ const call = (phone: string) => {
           <img v-for="i in 2" :key="i" src="/images/auth-bg.png" alt="mini image" />
         </div>
       </div>
+      <h1 class="a-detail__title a-detail__title-mobile">{{ route.params.slug }}</h1>
       <div class="a-detail__info--main">
         <div class="actions">
           <div class="price-date">
@@ -189,6 +190,9 @@ const call = (phone: string) => {
     font-weight: 500;
     line-height: normal;
     margin-bottom: 24px;
+  }
+  &__title-mobile {
+    display: none;
   }
   &__info {
     width: 100%;
@@ -497,6 +501,157 @@ const call = (phone: string) => {
     max-width: 343px;
     margin-top: 32px;
     margin-bottom: 80px;
+  }
+  @media (max-width: 880px) {
+    margin-top: 16px;
+    &__title {
+      display: none;
+      font-size: 18px;
+    }
+    &__title-mobile {
+      display: block;
+      margin-bottom: 14px;
+    }
+    &__info {
+      flex-direction: column;
+      gap: 16px;
+      &--images {
+        max-width: 100%;
+        .main {
+          max-width: 100%;
+          aspect-ratio: 16/9;
+        }
+        .mini-list {
+          display: none;
+        }
+      }
+      &--main {
+        .actions {
+          flex-direction: column;
+          gap: 16px;
+          .price-date {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            .price {
+              font-size: 20px;
+            }
+            .date {
+              font-size: 16px;
+            }
+          }
+          .indicators {
+            gap: 16px;
+            margin-left: auto;
+          }
+        }
+        .author {
+          gap: 16px;
+          margin-top: 24px;
+          .info {
+            gap: 8px;
+            .avatar {
+              padding: 8px;
+            }
+            .user-data {
+              gap: 8px;
+              .name {
+                font-size: 16px;
+              }
+              .role {
+                font-size: 14px;
+              }
+            }
+          }
+          .phone {
+            gap: 8px;
+            .title {
+              font-size: 14px;
+            }
+            .value {
+              font-size: 16px;
+            }
+          }
+        }
+        .city {
+          gap: 8px;
+          .title {
+            font-size: 16px;
+          }
+        }
+        .buttons {
+          gap: 8px;
+          margin-top: 24px;
+        }
+      }
+    }
+    &__chars {
+      gap: 16px;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      &--title {
+        font-size: 20px;
+      }
+      .info-block {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        row-gap: 16px;
+        column-gap: 50px;
+      }
+      .info-block__label {
+        font-size: 16px;
+      }
+      .info-block__value {
+        font-size: 16px;
+      }
+    }
+    &__description {
+      gap: 16px;
+      padding-bottom: 24px;
+      &--title {
+        font-size: 20px;
+      }
+      &--text {
+        font-size: 16px;
+      }
+    }
+    &__other-ads {
+      gap: 16px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      &--title {
+        .text {
+          font-size: 18px;
+          line-height: 1;
+        }
+        .count {
+          font-size: 16px;
+        }
+      }
+      &--items {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 16px;
+      }
+    }
+    &__similar {
+      gap: 16px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      &--title {
+        font-size: 18px;
+      }
+      &--items {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 16px;
+      }
+    }
+    &__all {
+      max-width: 100%;
+      margin-top: 24px;
+      margin-bottom: 30px;
+    }
   }
 }
 </style>

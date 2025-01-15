@@ -3,8 +3,9 @@ import ABreadcrumbs from '@/components/UI/ABreadcrumbs.vue'
 import ADetail from '@/components/Product/ADetail.vue'
 import { useRoute } from 'vue-router'
 import ASearch from '@/components/UI/ASearch.vue'
+import PageHeader from '@/components/Mobile/PageHeader.vue'
 
-window.scrollTo(0, 0);
+window.scrollTo(0, 0)
 
 const route = useRoute()
 
@@ -15,8 +16,9 @@ const breadcrumbs = [
 </script>
 
 <template>
+  <PageHeader />
   <div class="product-view container">
-    <ASearch />
+    <ASearch is-arrow-back />
     <ABreadcrumbs :breadcrumbs="breadcrumbs" class="product-view__breadcrumbs" />
     <ADetail />
   </div>

@@ -27,3 +27,15 @@
 .orange-fill {
   filter: brightness(0) saturate(100%) invert(65%) sepia(34%) saturate(5073%) hue-rotate(331deg) brightness(104%) contrast(98%);
 }
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.rotate-270 {
+  transform: rotate(270deg);
+}
