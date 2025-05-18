@@ -12,15 +12,15 @@ window.scrollTo(0, 0)
 const router = useRouter()
 const toast = useToast()
 
-if (!localStorage.getItem('access-token')) {
-  router.push('/auth')
-  toast.warning('Необходимо авторизоваться')
-}
-
 const breadcrumbs = [
   { title: 'Главная', url: '/' },
   { title: 'Профиль', url: '/profile' }
 ]
+
+if (!localStorage.getItem('access_token')) {
+  router.push('/auth')
+  toast.warning('Необходимо авторизоваться')
+}
 </script>
 
 <template>

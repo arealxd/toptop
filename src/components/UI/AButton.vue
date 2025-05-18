@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import UILoader from '@/components/UI/UILoader.vue'
+
 interface Props {
   title: string
   size?: 'small' | 'medium' | 'large'
@@ -42,9 +44,14 @@ withDefaults(defineProps<Props>(), {
       disabled: disabled
     }"
   >
-    <img v-if="preIcon" class="a-button__preicon" :src="`/icons/${preIcon}.svg`" alt="icon" />
-    <span>{{ title }}</span>
-    <img v-if="postIcon" class="a-button__posticon" :src="`/icons/${postIcon}.svg`" alt="icon" />
+    <template v-if="loading">
+      <UILoader :size="24" />
+    </template>
+    <template v-else>
+      <img v-if="preIcon" class="a-button__preicon" :src="`/icons/${preIcon}.svg`" alt="icon" />
+      <span>{{ title }}</span>
+      <img v-if="postIcon" class="a-button__posticon" :src="`/icons/${postIcon}.svg`" alt="icon" />
+    </template>
   </button>
 </template>
 

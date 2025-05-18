@@ -12,7 +12,7 @@ const toggleModal = () => {
 }
 
 const deleteAccount = () => {
-  localStorage.removeItem('access-token')
+  localStorage.removeItem('access_token')
   router.push('/auth')
 }
 </script>
