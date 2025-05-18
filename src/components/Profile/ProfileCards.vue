@@ -1,5 +1,15 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import AButton from '@/components/UI/AButton.vue'
+import { getProfileBalance } from '@/composables/api/profile'
+
+const balance = ref<number | null>(null)
+const fetchProfileBalance = async () => {
+  const balanceResponse = await getProfileBalance()
+  balance.value = balanceResponse?.balance
+}
+
+fetchProfileBalance()
 </script>
 
 <template>
@@ -8,7 +18,7 @@ import AButton from '@/components/UI/AButton.vue'
       <div class="profile-cards__wallet--texts">
         <p class="title">Кошелек</p>
         <p class="id">№2151651</p>
-        <p class="money">500 тг</p>
+        <p class="money">{{ balance ?? 0 }} ₸</p>
       </div>
       <div class="profile-cards__wallet--buttons">
         <AButton title="+ Пополнить" background="#FCE8CB" color="#FF2C20" />

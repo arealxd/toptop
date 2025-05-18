@@ -10,6 +10,7 @@ interface Props {
   gap?: string
   disabled?: boolean
   loading?: boolean
+  loadingSize?: number
   preIcon?: string | null
   postIcon?: string | null
   buttonType?: 'button' | 'submit'
@@ -24,6 +25,7 @@ withDefaults(defineProps<Props>(), {
   gap: '16px',
   disabled: false,
   loading: false,
+  loadingSize: 24,
   preIcon: null,
   postIcon: null,
   buttonType: 'button'
@@ -45,7 +47,7 @@ withDefaults(defineProps<Props>(), {
     }"
   >
     <template v-if="loading">
-      <UILoader :size="24" />
+      <UILoader :size="loadingSize" />
     </template>
     <template v-else>
       <img v-if="preIcon" class="a-button__preicon" :src="`/icons/${preIcon}.svg`" alt="icon" />

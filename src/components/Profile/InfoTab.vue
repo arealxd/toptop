@@ -4,17 +4,52 @@ import { ref } from 'vue'
 import { vMaska } from 'maska/vue'
 import AButton from '@/components/UI/AButton.vue'
 import AModal from '@/components/UI/AModal.vue'
+import { getProfileMe, updateProfile } from '@/composables/api/profile'
 
 const userStore = useUserStore()
+const profile = ref<any>({})
 const fileInput = ref<HTMLInputElement | null>(null)
 const deleteAvatarModal = ref<boolean>(false)
+const isUpdateLoading = ref<boolean>(false)
+
+const fetchProfile = async () => {
+  profile.value = await getProfileMe()
+  userStore.firstName = profile.value?.first_name
+  userStore.lastName = profile.value?.last_name
+  userStore.middleName = profile.value?.middle_name
+  userStore.email = profile.value?.email
+  userStore.phone = profile.value?.phone
+}
+
+fetchProfile()
 
 const toggleDeleteAvatarModal = () => {
   deleteAvatarModal.value = !deleteAvatarModal.value
 }
 
-const editProfile = () => {
-  console.log('editProfile')
+const editProfile = async () => {
+  isUpdateLoading.value = true
+  try {
+    const result = await updateProfile(profile.value?.id, {
+      first_name:
+        userStore.firstName === profile.value?.first_name ? undefined : userStore.firstName,
+      last_name: userStore.lastName === profile.value?.last_name ? undefined : userStore.lastName,
+      middle_name:
+        userStore.middleName === profile.value?.middle_name ? undefined : userStore.middleName,
+      email: userStore.email === profile.value?.email ? undefined : userStore.email,
+      phone:
+        userStore.phone.replace(/\D/g, '').replace(/^8/, '7').replace(/^9/, '7$&') ===
+        profile.value?.phone
+          ? undefined
+          : userStore.phone.replace(/\D/g, '').replace(/^8/, '7').replace(/^9/, '7$&'),
+      role: profile.value?.role
+    })
+    if (result !== 'no_changes') {
+      await fetchProfile()
+    }
+  } finally {
+    isUpdateLoading.value = false
+  }
 }
 
 const triggerUploadAvatar = () => {
@@ -52,60 +87,41 @@ const uploadFile = (e: Event) => {
     </AModal>
     <div class="info-tab__info">
       <p class="info-tab__info--name">
-        {{ `${userStore.surname} ${userStore.name} ${userStore.patronymic}` }}
+        {{ `${userStore.lastName} ${userStore.firstName} ${userStore.middleName}` }}
       </p>
       <form @submit.prevent="editProfile" class="info-tab__info--list">
         <div class="item">
           <p class="item__title">Фамилия</p>
-          <input
-            v-model="userStore.surname"
-            v-maska="'@@@@@@@@@@@@@@@'"
-            required
-            class="item__input"
-            type="text"
-          />
+          <input v-model="userStore.lastName" required class="item__input" type="text" />
         </div>
         <div class="item">
           <p class="item__title">Имя</p>
-          <input
-            v-model="userStore.name"
-            v-maska="'@@@@@@@@@@@@@@@'"
-            required
-            class="item__input"
-            type="text"
-          />
+          <input v-model="userStore.firstName" required class="item__input" type="text" />
         </div>
         <div class="item">
           <p class="item__title">Отчество</p>
-          <input
-            v-model="userStore.patronymic"
-            v-maska="'@@@@@@@@@@@@@@@'"
-            required
-            class="item__input"
-            type="text"
-          />
+          <input v-model="userStore.middleName" required class="item__input" type="text" />
         </div>
         <div class="item">
-          <p class="item__title">Дата рождения</p>
-          <input
-            v-model="userStore.dateOfBirth"
-            v-maska="'##.##.####'"
-            required
-            class="item__input"
-            type="text"
-          />
+          <p class="item__title">Email</p>
+          <input v-model="userStore.email" required class="item__input" type="email" />
         </div>
         <div class="item">
           <p class="item__title">Номер телефона</p>
           <input
             v-model="userStore.phone"
-            v-maska="'+7 ### ### ## ##'"
+            v-maska="'+7 (###) ###-##-##'"
             required
             class="item__input"
             type="text"
           />
         </div>
-        <AButton button-type="submit" title="Редактировать" />
+        <AButton
+          button-type="submit"
+          title="Редактировать"
+          :loading="isUpdateLoading"
+          :loading-size="23"
+        />
       </form>
     </div>
     <div class="info-tab__avatar">
