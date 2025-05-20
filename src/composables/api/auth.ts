@@ -1,6 +1,5 @@
 import api from '@/services/api'
 import { useToast } from 'vue-toastification'
-import router from '@/router'
 
 export const loginApi = async (email: string, password: string) => {
   try {
@@ -14,11 +13,11 @@ export const loginApi = async (email: string, password: string) => {
     if (response?.data?.data?.access_token) {
       localStorage.setItem('access_token', response.data.data.access_token)
       useToast().success('Вы успешно вошли в систему')
-      await router.push('/profile')
+      return 'success'
     }
   } catch (error: any) {
     console.error('Ошибка при логине:', error?.response?.data || error?.message)
-    useToast().error(error?.response?.data?.message || 'Ошибка при логине')
+    useToast().error(error?.response?.data?.message || 'Неверный логин или пароль')
     throw error
   }
 }
@@ -44,7 +43,7 @@ export const registerApi = async (
     if (response?.data?.data?.access_token) {
       localStorage.setItem('access_token', response.data.data.access_token)
       useToast().success('Регистрация прошла успешно')
-      await router.push('/profile')
+      return 'success'
     }
   } catch (error: any) {
     console.error('Ошибка при регистрации:', error?.response?.data || error?.message)

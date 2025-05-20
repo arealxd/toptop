@@ -54,3 +54,14 @@ export const getProfileBalance = async () => {
     throw error
   }
 }
+
+export const deleteAccount = async (userId: number) => {
+  try {
+    await api.delete(`/profile/${userId}`)
+    useToast().success('Аккаунт успешно удалён')
+  } catch (error: any) {
+    console.error('Ошибка при удалении аккаунта:', error?.response?.data || error.message)
+    useToast().error(error?.response?.data?.message || 'Ошибка при удалении аккаунта')
+    throw error
+  }
+}

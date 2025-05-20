@@ -7,18 +7,17 @@ import AModal from '@/components/UI/AModal.vue'
 import { getProfileMe, updateProfile } from '@/composables/api/profile'
 
 const userStore = useUserStore()
-const profile = ref<any>({})
 const fileInput = ref<HTMLInputElement | null>(null)
 const deleteAvatarModal = ref<boolean>(false)
 const isUpdateLoading = ref<boolean>(false)
 
 const fetchProfile = async () => {
-  profile.value = await getProfileMe()
-  userStore.firstName = profile.value?.first_name
-  userStore.lastName = profile.value?.last_name
-  userStore.middleName = profile.value?.middle_name
-  userStore.email = profile.value?.email
-  userStore.phone = profile.value?.phone
+  userStore.profile = await getProfileMe()
+  userStore.firstName = userStore.profile?.first_name
+  userStore.lastName = userStore.profile?.last_name
+  userStore.middleName = userStore.profile?.middle_name
+  userStore.email = userStore.profile?.email
+  userStore.phone = userStore.profile?.phone
 }
 
 fetchProfile()
@@ -30,19 +29,19 @@ const toggleDeleteAvatarModal = () => {
 const editProfile = async () => {
   isUpdateLoading.value = true
   try {
-    const result = await updateProfile(profile.value?.id, {
+    const result = await updateProfile(userStore.profile?.id, {
       first_name:
-        userStore.firstName === profile.value?.first_name ? undefined : userStore.firstName,
-      last_name: userStore.lastName === profile.value?.last_name ? undefined : userStore.lastName,
+        userStore.firstName === userStore.profile?.first_name ? undefined : userStore.firstName,
+      last_name: userStore.lastName === userStore.profile?.last_name ? undefined : userStore.lastName,
       middle_name:
-        userStore.middleName === profile.value?.middle_name ? undefined : userStore.middleName,
-      email: userStore.email === profile.value?.email ? undefined : userStore.email,
+        userStore.middleName === userStore.profile?.middle_name ? undefined : userStore.middleName,
+      email: userStore.email === userStore.profile?.email ? undefined : userStore.email,
       phone:
         userStore.phone.replace(/\D/g, '').replace(/^8/, '7').replace(/^9/, '7$&') ===
-        profile.value?.phone
+        userStore.profile?.phone
           ? undefined
           : userStore.phone.replace(/\D/g, '').replace(/^8/, '7').replace(/^9/, '7$&'),
-      role: profile.value?.role
+      role: userStore.profile?.role
     })
     if (result !== 'no_changes') {
       await fetchProfile()

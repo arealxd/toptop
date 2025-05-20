@@ -75,7 +75,10 @@ const authLogin = async () => {
     return
   }
 
-  await loginApi(email.value, password.value)
+  const result = await loginApi(email.value, password.value)
+  if (result === 'success') {
+    await router.push('/profile')
+  }
 }
 
 const authRegistration = async () => {
@@ -89,7 +92,7 @@ const authRegistration = async () => {
     return
   }
 
-  await registerApi(
+  const result = await registerApi(
     email.value,
     phone.value,
     firstName.value,
@@ -97,6 +100,9 @@ const authRegistration = async () => {
     middleName.value,
     password.value
   )
+  if (result === 'success') {
+    await router.push('/profile')
+  }
 }
 </script>
 

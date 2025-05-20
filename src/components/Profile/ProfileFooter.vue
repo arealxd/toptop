@@ -3,17 +3,41 @@ import { ref } from 'vue'
 import AModal from '@/components/UI/AModal.vue'
 import AButton from '@/components/UI/AButton.vue'
 import { useRouter } from 'vue-router'
+import { deleteAccount } from '@/composables/api/profile'
+import { useUserStore } from '@/stores/user'
 
+const userStore = useUserStore()
 const router = useRouter()
 const isModalVisible = ref<boolean>(false)
+const modalType = ref<'logout' | 'delete'>('logout')
+const isLoading = ref<boolean>(false)
 
-const toggleModal = () => {
+const toggleModal = (type: 'logout' | 'delete') => {
   isModalVisible.value = !isModalVisible.value
+  modalType.value = type
 }
 
-const deleteAccount = () => {
+const logout = () => {
   localStorage.removeItem('access_token')
   router.push('/auth')
+}
+
+const deleteProfile = async () => {
+  isLoading.value = true
+  try {
+    await deleteAccount(userStore.profile?.id)
+    logout()
+  } finally {
+    isLoading.value = false
+  }
+}
+
+const modalActions = () => {
+  if (modalType.value === 'logout') {
+    logout()
+  } else if (modalType.value === 'delete') {
+    deleteProfile()
+  }
 }
 </script>
 
@@ -21,15 +45,18 @@ const deleteAccount = () => {
   <div class="profile-footer">
     <AModal v-if="isModalVisible" @close="toggleModal">
       <div class="profile-footer__delete-modal">
-        <p class="title">Вы уверены, что хотите удалить аккаунт?</p>
+        <p class="title" v-if="modalType === 'logout'">Вы уверены, что хотите выйти из аккаунта?</p>
+        <p class="title" v-else>Вы уверены, что хотите удалить аккаунт?</p>
         <div class="buttons">
           <AButton class="button" title="Отмена" @click="toggleModal" />
           <AButton
             class="button"
             background="#FF0000"
             color="#fff"
-            title="Удалить"
-            @click="deleteAccount"
+            :title="modalType === 'logout' ? 'Выйти' : 'Удалить'"
+            :loading="isLoading"
+            :loading-size="21"
+            @click="modalActions"
           />
         </div>
       </div>
@@ -41,7 +68,10 @@ const deleteAccount = () => {
       </RouterLink>
       <p class="profile-footer__my-ads--indicator">1 активных объявлении</p>
     </div>
-    <button class="profile-footer__delete" @click="toggleModal">Удалить аккаунт</button>
+    <div class="profile-footer__buttons">
+      <button class="profile-footer__buttons--item" @click="toggleModal('logout')">Выйти из аккаунта</button>
+      <button class="profile-footer__buttons--item delete" @click="toggleModal('delete')">Удалить аккаунт</button>
+    </div>
   </div>
 </template>
 
@@ -96,15 +126,23 @@ const deleteAccount = () => {
       }
     }
   }
-  &__delete {
-    width: fit-content;
-    color: #3c9462;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    &:hover {
-      text-decoration: underline;
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &--item {
+      width: fit-content;
+      color: #3c9462;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .delete {
+      color: #ff0000;
     }
   }
 }
