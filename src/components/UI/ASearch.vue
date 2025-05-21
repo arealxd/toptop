@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import AButton from '@/components/UI/AButton.vue'
+import ACategoryDropdown from '@/components/UI/ACategoryDropdown.vue'
 import { useRouter } from 'vue-router'
+import { getCities, getCategories } from '@/composables/api/dictionary'
+import { ref, useTemplateRef } from 'vue'
+import { onClickOutside } from '@vueuse/core'
 
 const router = useRouter()
+const target = useTemplateRef<HTMLElement>('target')
+const citiesList = ref([])
+const categoriesList = ref([])
+const isCategoryOpen = ref(false)
 
 interface Props {
   isArrowBack?: boolean
@@ -13,6 +21,21 @@ defineProps<Props>()
 const goBack = () => {
   router.go(-1)
 }
+
+onClickOutside(target, () => {
+  isCategoryOpen.value = false
+})
+
+const fetchCities = async () => {
+  citiesList.value = await getCities()
+}
+
+const fetchCategories = async () => {
+  categoriesList.value = await getCategories()
+}
+
+fetchCities()
+fetchCategories()
 </script>
 
 <template>
@@ -24,7 +47,19 @@ const goBack = () => {
       class="black-fill rotate-180 a-search__arrow"
       alt="arrow"
     />
-    <AButton title="Категории" pre-icon="category" class="a-search__catalog" />
+    <div class="a-search__catalog-wrapper" ref="target">
+      <AButton
+        title="Категории"
+        pre-icon="category"
+        class="a-search__catalog"
+        @click="isCategoryOpen = !isCategoryOpen"
+      />
+      <ACategoryDropdown
+        v-if="isCategoryOpen"
+        :categories="categoriesList"
+      />
+    </div>
+
     <div class="a-search__search">
       <img src="/icons/search.svg" alt="search" class="search-icon" />
       <input type="text" placeholder="Поиск" class="a-search__input" />
@@ -49,6 +84,10 @@ const goBack = () => {
   &__arrow {
     display: none;
     margin-right: 8px;
+  }
+  &__catalog-wrapper {
+    position: relative;
+    display: inline-block;
   }
   &__catalog {
     max-width: 196px;
